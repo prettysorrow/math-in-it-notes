@@ -1,0 +1,64 @@
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily{\cyrillicfont}{PT Serif}
+\newfontfamily{\cyrillicfonttt}{PT Mono}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+
+\usepackage{mathtools}
+\newcommand{\set}[1]{\{\,#1\,\}}
+\pagenumbering{gobble}
+
+\renewcommand{\tightlist}{%
+	\setlength{\itemsep}{3pt}%
+	\setlength{\parskip}{3pt}}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\emergencystretch}{6em}
+
+% --- callout boxes (used by scripts/callouts.lua) ---
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+
+\colorlet{cbb-note}{cyan!50!blue!80}
+\colorlet{cbb-tip}{green!50!black!70}
+\colorlet{cbb-quote}{gray!50}
+\colorlet{cbb-warning}{orange!80!black}
+\colorlet{cbb-bug}{red!70!black}
+\colorlet{cbb-example}{violet!70}
+\colorlet{cbb-info}{cyan!50!blue!80}
+\colorlet{cbb-abstract}{blue!50!black!60}
+\colorlet{cbb-success}{green!50!black!70}
+\colorlet{cbb-question}{violet!60}
+\colorlet{cbb-failure}{red!70!black}
+
+\newcommand{\calloutcolorname}[1]{cbb-#1}
+
+\newenvironment{callout}[1]{%
+	\begin{tcolorbox}[
+			breakable,
+			leftrule=4pt,
+			rightrule=0pt,
+			toprule=0pt,
+			bottomrule=0pt,
+			colback=\calloutcolorname{#1}!5,
+			colframe=\calloutcolorname{#1},
+			arc=0pt,
+			outer arc=0pt,
+			left=8pt,
+			right=8pt,
+			top=4pt,
+			bottom=4pt,
+			parbox=false,
+		]
+		{\normalfont\bfseries\small\color{\calloutcolorname{#1}}\MakeUppercase{#1}\par\nobreak\smallskip}
+		}{%
+	\end{tcolorbox}
+}
+
+\AddToHook{begindocument/before}{%
+	\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}%
+}
